@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Logo from '../shared/Logo'
+import { siteConfig } from '../../config/site.config'  // Add this import
 
 interface NavBarProps {
   className?: string
@@ -10,11 +11,12 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  // Combine fixed hrefs with config text
   const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#features', label: 'Features' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#faq', label: 'FAQ' }
+    { href: '#home', label: siteConfig.navbar.menuItems[0].text },
+    { href: '#features', label: siteConfig.navbar.menuItems[1].text },
+    { href: '#pricing', label: siteConfig.navbar.menuItems[2].text },
+    { href: '#faq', label: siteConfig.navbar.menuItems[3].text }
   ]
 
   return (
