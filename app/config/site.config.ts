@@ -2,7 +2,7 @@ export const siteConfig = {
     // NavBar Text
     navbar: {
       menuItems: [
-        { text: "Yo momma" },
+        { text: "Home" },
         { text: "Features" },
         { text: "Pricing" },
         { text: "FAq" }
@@ -30,7 +30,7 @@ export const siteConfig = {
     // Features Section Text
     features: {
       headline: "Features",
-      subheadline: "Everythin you need to succeed",
+      subheadline: "Everything you need to succeed",
       featureItems: [
         {
           title: "Feature 1",
@@ -45,7 +45,7 @@ export const siteConfig = {
           description: "Description of feature 3"
         }
       ],
-      ctaText: "Get Started Now"
+      ctaText: "Get Started"
     },
   
     // Pricing Section Text
@@ -92,7 +92,8 @@ export const siteConfig = {
     finalCTA: {
       headline: "Ready to get started?",
       subheadline: "Join thousands of satisfied customers today",
-      ctaText: "Start Your Free Trial"
+      ctaText: "Start Your Free Trial",
+      ctaUrl: "https://your-payment-system.com/signup"
     },
   
     // FAQ Section Text
@@ -140,14 +141,6 @@ export const siteConfig = {
                   { text: "Privacy Policy" },
                   { text: "Terms of Service" },
                   { text: "Cookie Policy" }
-                ]
-              },
-              {
-                title: "Connect",
-                links: [
-                  { text: "Twitter" },
-                  { text: "LinkedIn" },
-                  { text: "GitHub" }
                 ]
               }
             ]

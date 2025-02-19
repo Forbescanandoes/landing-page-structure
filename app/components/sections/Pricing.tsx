@@ -1,10 +1,19 @@
 'use client'
 
 import { siteConfig } from '../../config/site.config'
+import { trackEvent } from '../../lib/analytics'
 
 const Pricing = () => {
   const { headline, subheadline, plans } = siteConfig.pricing
   const [basicPlan, proPlan, enterprisePlan] = plans
+
+  const handlePlanClick = (planName: string) => {
+    trackEvent({
+      action: 'select_plan',
+      category: 'Pricing',
+      label: planName,  // Track which plan was selected
+    })
+  }
 
   return (
     <section className="w-full px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -34,7 +43,10 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700">
+            <button 
+              onClick={() => handlePlanClick(basicPlan.name)}
+              className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
+            >
               {basicPlan.ctaText}
             </button>
           </div>
@@ -54,7 +66,10 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button className="mt-8 w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            <button 
+              onClick={() => handlePlanClick(proPlan.name)}
+              className="mt-8 w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
               {proPlan.ctaText}
             </button>
           </div>
@@ -74,7 +89,10 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700">
+            <button 
+              onClick={() => handlePlanClick(enterprisePlan.name)}
+              className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
+            >
               {enterprisePlan.ctaText}
             </button>
           </div>

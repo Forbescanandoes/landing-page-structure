@@ -1,17 +1,18 @@
 'use client'
 
 import { siteConfig } from '../../config/site.config'
+import Logo from '../shared/Logo'
 
 const Footer = () => {
   const { companyText, copyright, linkSections } = siteConfig.footer
-  const [quickLinks, legal, connect] = linkSections
+  const [quickLinks, legal] = linkSections
 
   return (
     <footer className="w-full px-4 py-12 sm:px-6 md:px-8 bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-        {/* Company Info */}
+        {/* Company Info with Logo */}
         <div className="col-span-2 md:col-span-1">
-          <h3 className="text-white font-semibold mb-4">Company</h3>
+          <Logo className="mb-4" />
           <p className="text-sm">
             {companyText}
           </p>
@@ -43,18 +44,6 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Social */}
-        <div>
-          <h3 className="text-white font-semibold mb-4">{connect.title}</h3>
-          <div className="flex space-x-4">
-            {connect.links.map((link, index) => (
-              <a key={index} href="#" className="hover:text-white">
-                {link.text}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 

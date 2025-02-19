@@ -1,9 +1,28 @@
 'use client'
 
 import { siteConfig } from '../../config/site.config'
+import { trackEvent } from '../../lib/analytics'
 
 const Hero = () => {
   const { headline, subheadline, ctaText } = siteConfig.hero
+
+  const handleScroll = () => {
+    const element = document.getElementById('finalcta');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleHeroClick = () => {
+    // Track the click
+    trackEvent({
+      action: 'click',
+      category: 'CTA',
+      label: 'Hero Button Click',
+    })
+    
+    // Scroll to final CTA (keeping original functionality)
+    const element = document.getElementById('finalcta');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  }
 
   return (
     <section className="w-full px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -18,7 +37,10 @@ const Hero = () => {
           </p>
           
           <div className="mt-8 sm:mt-10">
-            <button className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-medium hover:bg-blue-700">
+            <button 
+              onClick={handleHeroClick}
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-medium hover:bg-blue-700"
+            >
               {ctaText}
             </button>
           </div>
