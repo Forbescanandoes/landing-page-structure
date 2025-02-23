@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { siteConfig } from '../../config/site.config'
+import { siteConfig } from '../../config/site.config';
 
 const CallToAction = () => {
-  const { ctaText } = siteConfig.features
+  const { ctaText } = siteConfig.features;
 
   const handleScroll = () => {
     const element = document.getElementById('finalcta');
@@ -13,7 +13,7 @@ const CallToAction = () => {
   return (
     <div className="w-full py-8">
       <div className="max-w-3xl mx-auto text-center">
-        <button 
+        <button
           onClick={handleScroll}
           className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors"
         >
@@ -21,7 +21,7 @@ const CallToAction = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CallToAction
+export default CallToAction;

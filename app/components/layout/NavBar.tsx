@@ -1,45 +1,53 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Logo from '../shared/Logo'
-import { siteConfig } from '../../config/site.config'  // Add this import
+import { useState } from 'react';
+import Logo from '../shared/Logo';
+import { siteConfig } from '../../config/site.config'; // Add this import
 
 interface NavBarProps {
-  className?: string
+  className?: string;
 }
 
 const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Combine fixed hrefs with config text
   const navLinks = [
     { href: '#home', label: siteConfig.navbar.menuItems[0].text },
     { href: '#features', label: siteConfig.navbar.menuItems[1].text },
     { href: '#pricing', label: siteConfig.navbar.menuItems[2].text },
-    { href: '#faq', label: siteConfig.navbar.menuItems[3].text }
-  ]
+    { href: '#faq', label: siteConfig.navbar.menuItems[3].text },
+  ];
 
   return (
-    <nav className={`w-full px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-white shadow-sm ${className}`}>
+    <nav
+      className={`w-full px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-white shadow-sm ${className}`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Logo className="flex-shrink-0" />
-        
+
         {/* Mobile Menu Button */}
-        <button 
+        <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden p-2"
           aria-label="Toggle menu"
         >
           <div className="w-6 h-6 flex flex-col justify-between">
-            <span className={`block w-full h-0.5 bg-gray-600 transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
-            <span className={`block w-full h-0.5 bg-gray-600 ${isMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-full h-0.5 bg-gray-600 transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+            <span
+              className={`block w-full h-0.5 bg-gray-600 transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}
+            />
+            <span
+              className={`block w-full h-0.5 bg-gray-600 ${isMenuOpen ? 'opacity-0' : ''}`}
+            />
+            <span
+              className={`block w-full h-0.5 bg-gray-600 transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}
+            />
           </div>
         </button>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <a
               key={link.label}
               href={link.href}
@@ -54,7 +62,7 @@ const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
       {/* Mobile Menu */}
       <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <a
               key={link.label}
               href={link.href}
@@ -67,7 +75,7 @@ const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

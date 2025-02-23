@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { siteConfig } from '../../config/site.config'
-import Logo from '../shared/Logo'
+import { siteConfig } from '../../config/site.config';
+import Logo from '../shared/Logo';
 
 const Footer = () => {
-  const { companyText, copyright, linkSections } = siteConfig.footer
-  const [quickLinks, legal] = linkSections
+  const { companyText, copyright, linkSections } = siteConfig.footer;
+  const [quickLinks, legal] = linkSections;
 
   return (
     <footer className="w-full px-4 py-12 sm:px-6 md:px-8 bg-gray-900 text-gray-300">
@@ -13,9 +13,7 @@ const Footer = () => {
         {/* Company Info with Logo */}
         <div className="col-span-2 md:col-span-1">
           <Logo className="mb-4" />
-          <p className="text-sm">
-            {companyText}
-          </p>
+          <p className="text-sm">{companyText}</p>
         </div>
 
         {/* Quick Links */}
@@ -24,7 +22,10 @@ const Footer = () => {
           <ul className="space-y-2 text-sm">
             {quickLinks.links.map((link, index) => (
               <li key={index}>
-                <a href={`#${link.text.toLowerCase()}`} className="hover:text-white">
+                <a
+                  href={`#${link.text.toLowerCase()}`}
+                  className="hover:text-white"
+                >
                   {link.text}
                 </a>
               </li>
@@ -49,12 +50,10 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-800">
-        <p className="text-sm text-center">
-          {copyright}
-        </p>
+        <p className="text-sm text-center">{copyright}</p>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { siteConfig } from '../../config/site.config'
-import { trackEvent } from '../../lib/analytics'
+import { siteConfig } from '../../config/site.config';
+import { trackEvent } from '../../lib/analytics';
 
 const Pricing = () => {
-  const { headline, subheadline, plans } = siteConfig.pricing
-  const [basicPlan, proPlan, enterprisePlan] = plans
+  const { headline, subheadline, plans } = siteConfig.pricing;
+  const [basicPlan, proPlan, enterprisePlan] = plans;
 
   const handlePlanClick = (planName: string) => {
     trackEvent({
       action: 'select_plan',
       category: 'Pricing',
-      label: planName,  // Track which plan was selected
-    })
-  }
+      label: planName, // Track which plan was selected
+    });
+  };
 
   return (
     <section className="w-full px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -22,15 +22,15 @@ const Pricing = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             {headline}
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            {subheadline}
-          </p>
+          <p className="mt-4 text-lg text-gray-600">{subheadline}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Basic Plan */}
           <div className="p-6 bg-white rounded-lg shadow-sm border">
-            <h3 className="text-xl font-semibold text-gray-900">{basicPlan.name}</h3>
+            <h3 className="text-xl font-semibold text-gray-900">
+              {basicPlan.name}
+            </h3>
             <div className="mt-4">
               <span className="text-4xl font-bold">{basicPlan.price}</span>
               <span className="text-gray-600">{basicPlan.period}</span>
@@ -43,7 +43,7 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button 
+            <button
               onClick={() => handlePlanClick(basicPlan.name)}
               className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
             >
@@ -53,7 +53,9 @@ const Pricing = () => {
 
           {/* Pro Plan */}
           <div className="p-6 bg-white rounded-lg shadow-sm border border-blue-500">
-            <h3 className="text-xl font-semibold text-gray-900">{proPlan.name}</h3>
+            <h3 className="text-xl font-semibold text-gray-900">
+              {proPlan.name}
+            </h3>
             <div className="mt-4">
               <span className="text-4xl font-bold">{proPlan.price}</span>
               <span className="text-gray-600">{proPlan.period}</span>
@@ -66,7 +68,7 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button 
+            <button
               onClick={() => handlePlanClick(proPlan.name)}
               className="mt-8 w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
             >
@@ -76,7 +78,9 @@ const Pricing = () => {
 
           {/* Enterprise Plan */}
           <div className="p-6 bg-white rounded-lg shadow-sm border">
-            <h3 className="text-xl font-semibold text-gray-900">{enterprisePlan.name}</h3>
+            <h3 className="text-xl font-semibold text-gray-900">
+              {enterprisePlan.name}
+            </h3>
             <div className="mt-4">
               <span className="text-4xl font-bold">{enterprisePlan.price}</span>
               <span className="text-gray-600">{enterprisePlan.period}</span>
@@ -89,7 +93,7 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button 
+            <button
               onClick={() => handlePlanClick(enterprisePlan.name)}
               className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
             >
@@ -99,7 +103,7 @@ const Pricing = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Pricing
+export default Pricing;

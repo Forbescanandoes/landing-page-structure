@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { siteConfig } from '../../config/site.config'
+import { siteConfig } from '../../config/site.config';
 
 const SocialProof = () => {
-  const { headline, stats } = siteConfig.socialProof
+  const { headline, stats } = siteConfig.socialProof;
 
   return (
     <section className="w-full px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 bg-gray-50">
@@ -38,7 +38,7 @@ const SocialProof = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default SocialProof
+export default SocialProof;

@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { siteConfig } from '../../config/site.config'
-import { trackEvent } from '../../lib/analytics'
+import { siteConfig } from '../../config/site.config';
+import { trackEvent } from '../../lib/analytics';
 
 const Hero = () => {
-  const { headline, subheadline, ctaText } = siteConfig.hero
+  const { headline, subheadline, ctaText } = siteConfig.hero;
 
   const handleScroll = () => {
     const element = document.getElementById('finalcta');
@@ -17,12 +17,12 @@ const Hero = () => {
       action: 'click',
       category: 'CTA',
       label: 'Hero Button Click',
-    })
-    
+    });
+
     // Scroll to final CTA (keeping original functionality)
     const element = document.getElementById('finalcta');
     element?.scrollIntoView({ behavior: 'smooth' });
-  }
+  };
 
   return (
     <section className="w-full px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -31,13 +31,13 @@ const Hero = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900">
             {headline}
           </h1>
-          
+
           <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             {subheadline}
           </p>
-          
+
           <div className="mt-8 sm:mt-10">
-            <button 
+            <button
               onClick={handleHeroClick}
               className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-medium hover:bg-blue-700"
             >
@@ -47,7 +47,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
