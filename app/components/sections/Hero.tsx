@@ -4,24 +4,14 @@ import { siteConfig } from '../../config/site.config';
 import { trackEvent } from '../../lib/analytics';
 
 const Hero = () => {
-  const { headline, subheadline, ctaText } = siteConfig.hero;
-
-  const handleScroll = () => {
-    const element = document.getElementById('finalcta');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { headline, subheadline, button: ctaText } = siteConfig.hero;
 
   const handleHeroClick = () => {
-    // Track the click
     trackEvent({
       action: 'click',
-      category: 'CTA',
-      label: 'Hero Button Click',
+      category: 'Hero',
+      label: 'CTA Button Click',
     });
-
-    // Scroll to final CTA (keeping original functionality)
-    const element = document.getElementById('finalcta');
-    element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

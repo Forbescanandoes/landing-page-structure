@@ -24,6 +24,24 @@ export type AnalyticsEvent = {
   value?: number;
 };
 
+// Define the gtag window interface
+interface WindowWithGtag extends Window {
+  gtag: (
+    command: 'event',
+    action: string,
+    params: {
+      event_category: string;
+      event_label: string;
+      value?: number;
+    }
+  ) => void;
+}
+
+// Type guard for window with gtag
+const isWindowWithGtag = (window: Window): window is WindowWithGtag => {
+  return 'gtag' in window;
+};
+
 // Improved tracking function with type safety and error handling
 export const trackEvent = ({
   action,
@@ -32,8 +50,8 @@ export const trackEvent = ({
   value,
 }: AnalyticsEvent) => {
   try {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', action, {
+    if (typeof window !== 'undefined' && isWindowWithGtag(window)) {
+      window.gtag('event', action, {
         event_category: category,
         event_label: label,
         value: value,
@@ -46,5 +64,5 @@ export const trackEvent = ({
 
 // Helper to check if GA is properly initialized
 export const isGAInitialized = () => {
-  return typeof window !== 'undefined' && !!(window as any).gtag;
+  return typeof window !== 'undefined' && isWindowWithGtag(window);
 };

@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Logo from '../shared/Logo';
-import { siteConfig } from '../../config/site.config'; // Add this import
+import { siteConfig } from '../../config/site.config';
+import { linksConfig } from '../../config/links.config';
 
 interface NavBarProps {
   className?: string;
@@ -11,12 +12,11 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Combine fixed hrefs with config text
   const navLinks = [
-    { href: '#home', label: siteConfig.navbar.menuItems[0].text },
-    { href: '#features', label: siteConfig.navbar.menuItems[1].text },
-    { href: '#pricing', label: siteConfig.navbar.menuItems[2].text },
-    { href: '#faq', label: siteConfig.navbar.menuItems[3].text },
+    { href: linksConfig.nav.scroll.features, label: 'Features' },
+    { href: linksConfig.nav.scroll.pricing, label: 'Pricing' },
+    { href: linksConfig.nav.scroll.faq, label: 'FAQ' },
+    { href: linksConfig.nav.scroll.contact, label: 'Contact' },
   ];
 
   return (
@@ -24,7 +24,7 @@ const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
       className={`w-full px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-white shadow-sm ${className}`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Logo className="flex-shrink-0" />
+        <Logo className="flex-shrink-0" size="medium" />
 
         {/* Mobile Menu Button */}
         <button
@@ -49,13 +49,19 @@ const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
         <div className="hidden md:flex space-x-8">
           {navLinks.map(link => (
             <a
-              key={link.label}
+              key={link.href}
               href={link.href}
               className="text-gray-600 hover:text-gray-900"
             >
               {link.label}
             </a>
           ))}
+          <a
+            href={linksConfig.nav.cta}
+            className="text-blue-600 hover:text-blue-700 font-medium"
+          >
+            {siteConfig.nav.button}
+          </a>
         </div>
       </div>
 
@@ -64,7 +70,7 @@ const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navLinks.map(link => (
             <a
-              key={link.label}
+              key={link.href}
               href={link.href}
               className="block px-3 py-2 text-gray-600 hover:text-gray-900"
               onClick={() => setIsMenuOpen(false)}
@@ -72,6 +78,13 @@ const NavBar: React.FC<NavBarProps> = ({ className = '' }) => {
               {link.label}
             </a>
           ))}
+          <a
+            href={linksConfig.nav.cta}
+            className="block px-3 py-2 text-blue-600 hover:text-blue-700 font-medium"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {siteConfig.nav.button}
+          </a>
         </div>
       </div>
     </nav>

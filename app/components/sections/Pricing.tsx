@@ -1,6 +1,7 @@
 'use client';
 
 import { siteConfig } from '../../config/site.config';
+import { linksConfig } from '../../config/links.config';
 import { trackEvent } from '../../lib/analytics';
 
 const Pricing = () => {
@@ -43,12 +44,13 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button
+            <a
+              href={linksConfig.pricing.basic}
               onClick={() => handlePlanClick(basicPlan.name)}
-              className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
+              className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700 inline-block text-center"
             >
-              {basicPlan.ctaText}
-            </button>
+              {basicPlan.button}
+            </a>
           </div>
 
           {/* Pro Plan */}
@@ -68,12 +70,13 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button
+            <a
+              href={linksConfig.pricing.pro}
               onClick={() => handlePlanClick(proPlan.name)}
-              className="mt-8 w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="mt-8 w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 inline-block text-center"
             >
-              {proPlan.ctaText}
-            </button>
+              {proPlan.button}
+            </a>
           </div>
 
           {/* Enterprise Plan */}
@@ -93,12 +96,13 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button
+            <a
+              href={linksConfig.pricing.enterprise}
               onClick={() => handlePlanClick(enterprisePlan.name)}
-              className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
+              className="mt-8 w-full py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700 inline-block text-center"
             >
-              {enterprisePlan.ctaText}
-            </button>
+              {enterprisePlan.button}
+            </a>
           </div>
         </div>
       </div>

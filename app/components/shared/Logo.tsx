@@ -5,17 +5,39 @@ import { logoConfig } from '../../config/logo.config';
 
 interface LogoProps {
   className?: string;
+  size?: 'small' | 'medium' | 'large';
 }
 
-const Logo = ({ className = '' }: LogoProps) => {
+const Logo = ({ className = '', size = 'medium' }: LogoProps) => {
+  // Use base dimensions from config
+  const baseWidth = logoConfig.primary.width;
+  const baseHeight = logoConfig.primary.height;
+
+  // Scale factors for different sizes - mobile-first approach
+  const scaleFactors = {
+    small: 0.8, // 80% of base size (128x42)
+    medium: 1, // 100% of base size (160x53)
+    large: 1.2, // 120% of base size (192x64)
+  };
+
+  const scale = scaleFactors[size];
+  const width = baseWidth * scale;
+  const height = baseHeight * scale;
+
   return (
-    <div className={`relative w-20 sm:w-24 md:w-28 lg:w-32 ${className}`}>
-      <img
+    <div
+      className={`relative ${className}`}
+      style={{
+        width: width,
+        height: height,
+      }}
+    >
+      <Image
         src={logoConfig.primary.src}
         alt={logoConfig.primary.alt}
-        width={logoConfig.primary.width}
-        height={logoConfig.primary.height}
-        className="w-full h-auto"
+        fill
+        className="object-contain"
+        priority
       />
     </div>
   );
